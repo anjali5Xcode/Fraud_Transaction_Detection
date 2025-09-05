@@ -1,11 +1,13 @@
 import streamlit as st
 import pandas as pd
 import joblib
+
+# Load trained model + pipeline
+model = joblib.load("model_cycle1.joblib") # Corrected model file name
+
+# --- Fraud Class Definition (Copied from Notebook) ---
 import inflection
 
-# -------------------------------
-# Fraud Class Definition
-# -------------------------------
 class Fraud:
 
     def __init__(self):
@@ -49,6 +51,7 @@ class Fraud:
         # Drop unnecessary columns
         return df.drop(columns=["name_orig", "name_dest", "step_weeks", "step_days"], axis=1)
 
+
     def data_preparation(self, df):
         """Apply scaling + encoding in the same way as training."""
         # Scale numeric columns
@@ -67,24 +70,21 @@ class Fraud:
 
         return df_encoded[self.final_columns_selected]
 
+
     def get_prediction(self, model, original_data, test_data):
         """Generate predictions and return DataFrame with results."""
         pred = model.predict(test_data)
         original_data = original_data.copy()
         original_data["prediction"] = pred
         return original_data
+# --- End Fraud Class Definition ---
 
 
-# -------------------------------
-# Streamlit App
-# -------------------------------
-
-# Load trained model
-model = joblib.load("fraud_model.pkl")
+# Instantiate Fraud class
 pipeline = Fraud()
 
-# App Title
-st.title("💳 Transaction Fraud Detection")
+# Title
+st.title("💳 Transaction Fraud Detection API (Streamlit)")
 
 # Sidebar Inputs
 st.sidebar.header("Enter Transaction Details")
@@ -96,11 +96,11 @@ oldbalance_dest = st.sidebar.number_input("Old Balance (Receiver)", min_value=0.
 newbalance_dest = st.sidebar.number_input("New Balance (Receiver)", min_value=0.0, step=0.01)
 transaction_type = st.sidebar.selectbox("Transaction Type", ["CASH_OUT", "PAYMENT", "TRANSFER", "DEBIT", "CASH_IN"])
 
-# Mock IDs (required by pipeline, but not important for prediction)
-name_orig = "C123456"
-name_dest = "M123456"
+# Mock IDs (required by your pipeline, but not important for prediction)
+name_orig = "C123456"  # fake sender account
+name_dest = "M123456"  # fake receiver account
 
-# Prediction Button
+# Predict button
 if st.sidebar.button("Predict Fraud"):
     # Create DataFrame similar to training data
     input_data = pd.DataFrame([{
@@ -129,6 +129,6 @@ if st.sidebar.button("Predict Fraud"):
     st.subheader("Prediction Result:")
     st.success(result)
 
-    # Optional: show processed input
+    # Optional: show full processed input
     with st.expander("🔍 Processed Input Data"):
         st.write(prediction_df)
