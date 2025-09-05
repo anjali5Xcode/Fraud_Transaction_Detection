@@ -17,6 +17,7 @@ The project includes:
 
 🌐 Deployment-ready App built with Streamlit for interactive predictions
 
+
 🛠️ Tech Stack
 
 Python 3.9+
@@ -36,6 +37,7 @@ Streamlit → Interactive web app
 SHAP → Model explainability
 
 📂 Project Structure
+
 fraud_detection_app/
 │── app.py                        # Streamlit app
 │── fraud.py                      # Fraud pipeline class
@@ -45,6 +47,7 @@ fraud_detection_app/
 │── onehotencoder_cycle1.joblib    # Encoder object
 │── requirements.txt               # Dependencies
 │── README.md                      # Project documentation
+
 
 🚀 How to Run
 
@@ -63,6 +66,7 @@ App will be available at 👉 http://localhost:8501
 
 📊 Model Training (Notebook / Script)
 
+
 The training pipeline includes:
 
 Data Cleaning → Fixing column names, handling missing values
@@ -77,6 +81,7 @@ Evaluation → F1-score, ROC-AUC, Precision-Recall Curve
 
 Explainability → SHAP values for feature importance
 
+
 🌐 Streamlit App (Demo)
 
 The app allows you to:
@@ -87,6 +92,7 @@ Predict whether the transaction is Fraudulent 🚨 or Legitimate ✅
 
 Explore processed data in an expandable section
 
+
 📈 Results
 
 Best model: XGBoost
@@ -95,6 +101,7 @@ Achieved high ROC-AUC & F1 score on imbalanced dataset
 
 SHAP analysis highlighted transaction type & balance differences as key fraud indicators
 
+
 🔮 Future Improvements
 
 Add real-time fraud detection API (FastAPI/Flask)
@@ -102,6 +109,7 @@ Add real-time fraud detection API (FastAPI/Flask)
 Deploy app on Streamlit Cloud / Heroku / AWS
 
 Integrate with transaction logging system
+
 
 👩‍💻 Author
 
