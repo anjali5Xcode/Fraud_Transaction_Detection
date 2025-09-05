@@ -1,4 +1,5 @@
 💳 Transaction Fraud Detection using Machine Learning
+
 📌 Project Overview
 
 Financial fraud is a serious problem in digital banking and online transactions.
@@ -46,8 +47,9 @@ fraud_detection_app/
 │── README.md                      # Project documentation
 
 🚀 How to Run
+
 1️⃣ Clone Repository
-git clone https://github.com/your-username/fraud-detection-app.git
+git clone https://github.com/anjali5Xcode/fraud-detection-app.git
 cd fraud-detection-app
 
 2️⃣ Install Dependencies
@@ -103,4 +105,4 @@ Integrate with transaction logging system
 
 👩‍💻 Author
 
-Developed by [Your Name]
+Developed by Anjali
