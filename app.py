@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 import inflection
+from category_encoders import OneHotEncoder
 
 class Fraud:
 
