@@ -1,116 +1,96 @@
-💳 Transaction Fraud Detection using Machine Learning
+Transaction Fraud Detection Model 💳
+This project delivers a machine learning model to detect fraudulent financial transactions, with a specific focus on the expansion of Blocker Fraud Company in Brazil. The solution includes data analysis, feature engineering, model training, and a deployed API accessible via a Streamlit application.
 
-📌 Project Overview
+🚀 Key Features
+Data Analysis: In-depth exploratory data analysis (EDA) to understand transaction patterns and identify key features.
 
-Financial fraud is a serious problem in digital banking and online transactions.
-This project builds a machine learning pipeline to detect fraudulent transactions based on transaction amount, balances, and transaction type.
+Feature Engineering: Creation of new variables to capture valuable information, such as balance changes before and after transactions.
 
-The project includes:
+Model Training: A robust XGBoost model was trained and fine-tuned to achieve high performance in detecting fraud.
 
-📊 Exploratory Data Analysis (EDA)
+Business-Oriented Metrics: The model's performance is evaluated not only on standard metrics (Precision, Accuracy) but also on business-specific metrics like expected profit and loss.
 
-🛠 Feature Engineering & Preprocessing
+Deployment Ready: The model and its pre-processing pipeline are saved for easy integration into an API, with a live demo available on Streamlit.
 
-🤖 Model Training & Evaluation (Random Forest, XGBoost, etc.)
+📈 Model Performance
+The final XGBoost model demonstrated strong performance on unseen data, as detailed below:
 
-📈 Performance Metrics & Visualization (Confusion Matrix, ROC, Precision-Recall, SHAP Explainability)
+Balanced Accuracy: 0.85
 
-🌐 Deployment-ready App built with Streamlit for interactive predictions
+Precision: 0.84
 
+Recall: 0.85
 
-🛠️ Tech Stack
+F1 Score: 0.84
 
-Python 3.9+
+Kappa Score: 0.84
 
-Pandas, NumPy → Data manipulation
+💰 Business Impact
+Based on a test dataset, the model shows a significant improvement in profitability for the Blocker Fraud Company compared to its current method.
 
-Matplotlib, Seaborn → Visualization
+Metric	Using the Model	Current Method (isFlaggedFraud)
+Expected Revenue	R$ 1,778,591.70	R$ 0.00
+Expected Loss	R$ 32,836.56	R$ 33,680,683.00
+Expected Profit	R$ 1,745,755.14	R$ -33,680,683.00
 
-Scikit-learn → ML algorithms & preprocessing
+Export to Sheets
+Note: All monetary values are based on the test data used for evaluation and are represented in Brazilian Reais (R$).
 
-XGBoost → Gradient boosting model
+🛠️ Project Structure
+The project code is organized into the following sections:
 
-Joblib → Model serialization
+Business Understanding: Defines the project's goals, the problem, and the key business questions to be answered.
 
-Streamlit → Interactive web app
+Data Description & Pre-processing: Details the dataset, cleans the data, and performs initial data type conversions.
 
-SHAP → Model explainability
+Feature Engineering: Creates new features to enhance model performance.
 
-📂 Project Structure
+Exploratory Data Analysis (EDA): Visualizes and analyzes the data to validate hypotheses.
 
-fraud_detection_app/
-│── app.py                        # Streamlit app
-│── fraud.py                      # Fraud pipeline class
-│── transaction_fraud_detection_cycle1.py   # Full training script
-│── fraud_model.pkl                # Trained model
-│── minmaxscaler_cycle1.joblib     # Scaler object
-│── onehotencoder_cycle1.joblib    # Encoder object
-│── requirements.txt               # Dependencies
-│── README.md                      # Project documentation
+Data Preparation: Splits the data and applies scaling and encoding transformations.
 
+Feature Selection: Uses a robust method to select the most relevant features for the model.
 
-🚀 How to Run
+Machine Learning Modeling: Trains and evaluates several classification models, comparing their performance.
 
-1️⃣ Clone Repository
-git clone https://github.com/anjali5Xcode/fraud-detection-app.git
-cd fraud-detection-app
+Hyperparameter Fine-Tuning: Optimizes the best-performing model (XGBoost) to maximize performance.
 
-2️⃣ Install Dependencies
+Conclusions & Business Insights: Presents the final model's performance and answers the initial business questions.
+
+Model Deployment: Provides the code and necessary files to deploy the model for inference via an API.
+
+💻 How to Run the Project
+Prerequisites
+You need to have Python installed. We recommend using a virtual environment.
+
+Installation
+Clone this repository:
+
+Bash
+
+git clone https://github.com/anjali5Xcode/Fraud_Transaction_Detection.git
+cd Fraud_Transaction_Detection
+Install the required packages:
+
+Bash
+
 pip install -r requirements.txt
+(Note: You'll need to create a requirements.txt file from the imported libraries in the notebook, like pandas, numpy, scikit-learn, xgboost, lightgbm, streamlit, etc.)
 
-3️⃣ Run Streamlit App
-streamlit run app.py
+Execution
+The core logic of the project is contained within the transaction_fraud_detection_cycle1 (1).py notebook. You can run it locally in a Jupyter environment.
 
+To run the Streamlit application for a live demo:
 
-App will be available at 👉 http://localhost:8501
+Ensure you have the model and scaler files (fraud_model.pkl, minmaxscaler_cycle1.joblib, onehotencoder_cycle1.joblib) saved in the same directory.
 
-📊 Model Training (Notebook / Script)
+Run the Streamlit application from your terminal:
 
+Bash
 
-The training pipeline includes:
+streamlit run transaction_fraud_detection_cycle1 (1).py
+The application will open in your web browser, allowing you to input transaction details and get real-time fraud predictions.
 
-Data Cleaning → Fixing column names, handling missing values
-
-Feature Engineering → Creating new balance difference features
-
-Preprocessing → Scaling numeric values, encoding categorical variables
-
-Modeling → Random Forest, XGBoost with hyperparameter tuning
-
-Evaluation → F1-score, ROC-AUC, Precision-Recall Curve
-
-Explainability → SHAP values for feature importance
-
-
-🌐 Streamlit App (Demo)
-
-The app allows you to:
-
-Input transaction details (amount, balances, transaction type)
-
-Predict whether the transaction is Fraudulent 🚨 or Legitimate ✅
-
-Explore processed data in an expandable section
-
-
-📈 Results
-
-Best model: XGBoost
-
-Achieved high ROC-AUC & F1 score on imbalanced dataset
-
-SHAP analysis highlighted transaction type & balance differences as key fraud indicators
-
-
-🔮 Future Improvements
-
-Add real-time fraud detection API (FastAPI/Flask)
-
-Deploy app on Streamlit Cloud / Heroku / AWS
-
-Integrate with transaction logging system
-
-
-👩‍💻 Author
-
-Developed by Anjali
+🔗 Live Demo
+You can access a live version of the application here:
+https://fraudtransactiondetection-fa9erdbmtf8uwgtmh5u6sc.streamlit.app/
