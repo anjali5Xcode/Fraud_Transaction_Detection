@@ -9,3 +9,4 @@ xgboost
 seaborn
 matplotlib
 inflection
+category_encoders
